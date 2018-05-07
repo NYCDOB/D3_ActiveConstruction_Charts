@@ -9,7 +9,7 @@
 
     <style>
         text {
-            font: 14px sans-serif;
+            font: 12px sans-serif;
         }
         svg {
             display: block;
@@ -31,7 +31,7 @@
 <script>
 
 
-d3.csv("https://nycdob.github.io/D3_ActiveConstruction_Charts/examples/Highest_Estimated_Cost_Citywide.csv", function(error, data){
+d3.csv("https://raw.githubusercontent.com/NYCDOB/DOB_Dashboards/Major_Construction_Tables/Highest_Estimated_Cost_Citywide.csv", function(error, data){
 	console.log(data)
 	
 	//create an empty object that nv is expecting
@@ -60,9 +60,12 @@ d3.csv("https://nycdob.github.io/D3_ActiveConstruction_Charts/examples/Highest_E
           .duration(350)
           .showControls(false);       //Allow user to switch between "Grouped" and "Stacked" mode.
           //.tooltip.enabled(true)             //Show tooltips on hover.
-	  var commasFormatter = d3.format(",");
+	  //var commasFormatter = d3.format(",");
+	  var millFormatter = d3.format(".2s");
+	  
       chart.yAxis
-          .tickFormat(function(d) { return "$" + commasFormatter(d); });
+          .tickFormat(function(d) { return "$" + millFormatter(d).replace(/G/, "B"); });
+
 	  chart.margin({"left":250, "right":100});
       d3.select('#chart1 svg')
           .datum(exampleData)
