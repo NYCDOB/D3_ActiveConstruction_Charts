@@ -9,7 +9,7 @@
 
     <style>
         text {
-            font: 14px sans-serif;
+            font: 12px sans-serif;
         }
         svg {
             display: block;
@@ -31,7 +31,7 @@
 <script>
 
 
-d3.csv("https://nycdob.github.io/D3_ActiveConstruction_Charts/examples/Occupancy_SQFT_Citywide.csv", function(error, data){
+d3.csv("https://raw.githubusercontent.com/NYCDOB/DOB_Dashboards/Major_Construction_Tables/Occupancy_SQFT_Citywide.csv", function(error, data){
 	console.log(data)
 	
 	//create an empty object that nv is expecting
@@ -61,7 +61,7 @@ d3.csv("https://nycdob.github.io/D3_ActiveConstruction_Charts/examples/Occupancy
           .showControls(false);       //Allow user to switch between "Grouped" and "Stacked" mode.
           //.tooltip.enabled(true)             //Show tooltips on hover.
       chart.yAxis
-          .tickFormat(d3.format(',.0f'));
+          .tickFormat(d3.format('.2s'));
 	  chart.margin({"left":300, "right":100});
       d3.select('#chart1 svg')
           .datum(exampleData)
